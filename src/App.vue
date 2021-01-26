@@ -27,7 +27,7 @@ export default {
     return {
       athlete: null,
       code: null,
-      connectionPage: "https://www.strava.com/oauth/authorize?client_id=242&response_type=code&redirect_uri=http://nicolaspigelet.com/strava/routes&approval_prompt=force",
+      connectionPage: "https://www.strava.com/oauth/authorize?client_id=242&response_type=code&redirect_uri=https://stravaroutes.vercel.app&approval_prompt=force",
       routes: null,
       token: null
     }
