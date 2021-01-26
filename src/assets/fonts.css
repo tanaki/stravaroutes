@@ -1,0 +1,18 @@
+@font-face{
+	font-family:'Maison Neue';
+	src:url("./fonts/maison-neue/MaisonNeue-Book.eot");
+	src:
+		url("./fonts/maison-neue/MaisonNeue-Book.eot?#iefix") format("embedded-opentype"),
+		url("./fonts/maison-neue/MaisonNeue-Book.woff") format("woff"),
+		url("./fonts/maison-neue/MaisonNeue-Book.ttf") format("truetype");
+	font-weight:normal;
+}
+@font-face{
+	font-family:'Maison Neue';
+	src:url("./fonts/maison-neue/MaisonNeue-Bold.eot");
+	src:
+		url("./fonts/maison-neue/MaisonNeue-Bold.eot?#iefix") format("embedded-opentype"),
+		url("./fonts/maison-neue/MaisonNeue-Bold.woff") format("woff"),
+		url("./fonts/maison-neue/MaisonNeue-Bold.ttf") format("truetype");
+	font-weight:bold;
+}

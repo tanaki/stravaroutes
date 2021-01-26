@@ -41,6 +41,7 @@ export default {
 
     var self = this;
     window.location.search.split('&').forEach(( s ) => {
+
       var splitted = s.split('=')
       if ( splitted[0] == 'code' ) {
         self.code = splitted[1];
@@ -78,6 +79,7 @@ export default {
           if ( data.errors ) {
 
             console.log("error");
+            window.location.href = window.location.origin;
 
           } else {
 
@@ -151,11 +153,11 @@ export default {
 </script>
 
 <style>
-
 @import './assets/reset.css';
+@import './assets/fonts.css';
 
 body {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Maison Neue", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -166,6 +168,7 @@ body {
 }
 
 h3 {
+  font-size: 34px;
   font-weight: bold;
 }
 .loggedout h3 {
@@ -176,14 +179,18 @@ h3 {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
+}
+.search h3 {
+  font-size: 24px;
 }
 .search input {
   -webkit-appearance: none;
   appearance: none;
   border-color: #F3F3F3;
   border-style: solid;
+  font-family: "Maison Neue", Avenir, Helvetica, Arial, sans-serif;
   padding: 10px;
 }
 
@@ -191,8 +198,8 @@ table {
   border: 1px solid #F3F3F3;
   border-spacing: 0;
   margin: 20px auto;
-  max-width: 800px;
-  width: 800px;
+  max-width: 1000px;
+  width: 1000px;
 }
 tr {
   border: none;
@@ -207,10 +214,63 @@ th {
   cursor: pointer;
   font-weight: bold;
 }
+th.selected {
+  border-bottom-color: #fc5200;
+}
 .name {
   text-align: left;
 }
 tr:nth-child(even) {
   background: #F9F9F9;
 }
+a {
+  color: #007FB6;
+  font-weight: bold;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 1040px) {  
+
+  #app {
+    padding-top: 20px;
+  }
+
+  .search {
+    margin: 0 20px;
+  }
+  .search h3 {
+    font-size: 16px;
+  }
+  table {
+    margin: 20px;
+    max-width: 100%;
+    width: calc(100% - 40px);
+  }
+  th, td {
+    padding: 10px 5px;
+  }
+  .name {
+    width: 85%;
+  }
+  .distance {
+    width: 5%;
+  }
+  .elevation {
+    width: 5%;
+  }
+  .type {
+    width: 5%;
+  }
+  th,
+  .name,
+  .distance,
+  .elevation,
+  .type {
+    font-size: 12px;
+  }
+}
+
 </style>

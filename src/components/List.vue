@@ -8,10 +8,10 @@
   <table>
     <thead>
       <tr>
-        <th class="name" @click="sort('name')">Name</th>
-        <th @click="sort('distance')">Distance</th>
-        <th @click="sort('elevation_gain')">D+</th>
-        <th @click="sort('type')">Type</th>
+        <th :class="{'selected' : currentSort == 'name' }" @click="sort('name')">Name</th>
+        <th :class="{'selected' : currentSort == 'distance' }" @click="sort('distance')">Distance</th>
+        <th :class="{'selected' : currentSort == 'elevation_gain' }" @click="sort('elevation_gain')">D+</th>
+        <th :class="{'selected' : currentSort == 'type' }" @click="sort('type')">Type</th>
       </tr>
     </thead>
     <tbody>
@@ -55,7 +55,7 @@
             if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
             return 0;
           }).filter( ( route ) => {
-            return ( route.name.toLowerCase().includes( self.searchValue ) );
+            return ( self.slugify(route.name).toLowerCase().includes( self.slugify(self.searchValue) ) );
           } );
 
         else
@@ -68,13 +68,31 @@
     },
     methods: {
       
-      sort:function(s) {
+      sort (s) {
 
         //if s == current sort, reverse
         if(s === this.currentSort) {
           this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
         }
         this.currentSort = s;
+      },
+
+      slugify (str) {
+        var map = {
+          'a' : 'á|à|ã|â|À|Á|Ã|Â',
+          'e' : 'é|è|ê|É|È|Ê',
+          'i' : 'í|ì|î|Í|Ì|Î',
+          'o' : 'ó|ò|ô|õ|Ó|Ò|Ô|Õ',
+          'u' : 'ú|ù|û|ü|Ú|Ù|Û|Ü',
+          'c' : 'ç|Ç',
+          'n' : 'ñ|Ñ'
+        };
+        
+        for (var pattern in map) {
+          str = str.replace(new RegExp(map[pattern], 'g'), pattern);
+        }
+
+        return str;
       }
     }
   }
